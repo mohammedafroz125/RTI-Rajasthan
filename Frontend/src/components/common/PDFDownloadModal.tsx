@@ -1,3 +1,32 @@
+/**
+ * ============================================================================
+ * PDF DOWNLOAD MODAL COMPONENT
+ * ============================================================================
+ * 
+ * Purpose: Modal component for downloading RTI template PDFs with user
+ *          information collection for tracking purposes.
+ * 
+ * State Usage: All states (shared component)
+ * 
+ * Features:
+ * - Multi-approach PDF download (backend → public folder → direct import)
+ * - User information form for download tracking
+ * - State-specific PDF path resolution
+ * - Graceful fallback handling
+ * 
+ * PDF Resolution Strategy:
+ * 1. Try backend API download endpoint
+ * 2. Fallback to public folder (/assets/PDF/)
+ * 3. Fallback to direct Vite import (for Delhi/Telangana)
+ * 
+ * Special Handling:
+ * - Rajasthan: PDFs stored in public folder (flat structure)
+ * - Delhi/Telangana: PDFs in src/assets/PDF/ (nested structure)
+ * 
+ * Used by: RTIByDepartment, StateDepartments, and other department listing components
+ * ============================================================================
+ */
+
 import React, { useState, useEffect } from 'react';
 import { getPDFPath } from '../../utils/pdfMapping';
 

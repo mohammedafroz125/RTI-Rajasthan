@@ -1,14 +1,48 @@
+/**
+ * ============================================================================
+ * DYNAMIC STATE PAGE
+ * ============================================================================
+ * 
+ * Purpose: Generic state page that dynamically renders content based on
+ *          state slug (Telangana, Delhi, etc.). Uses shared state components.
+ * 
+ * State Usage: All states except Rajasthan (which uses Home.tsx)
+ * 
+ * Routing:
+ * - "/state/:stateSlug" → Renders this component
+ * - Falls back to subdomain detection if no slug provided
+ * - Defaults to Telangana if no state can be determined
+ * 
+ * Key Differences from Home.tsx:
+ * - Uses generic StateHero, StateDepartments, StateProcess components
+ * - Not Rajasthan-specific (Home.tsx is Rajasthan-only)
+ * - Supports multiple states via dynamic routing
+ * 
+ * Component Structure:
+ * 1. StateHero (dynamic based on state data)
+ * 2. StateDepartments (department listing)
+ * 3. StateProcess (RTI filing process steps)
+ * 4. AboutFileMyRTI (platform information)
+ * 5. RTIByDepartment (department-based RTI filing)
+ * 6. StateFAQ (state-specific FAQs)
+ * 7. StateCTA (call-to-action)
+ * 
+ * Used by: Telangana, Delhi, and other states (via "/state/:stateSlug" route)
+ * ============================================================================
+ */
+
 import React, { lazy, Suspense, useDeferredValue } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useStateData, getStateSlugFromSubdomain } from '../hooks/useStateData';
 import { LazyChatbot } from '../components/common/LazyChatbot';
 import { useParams, Link } from 'react-router-dom';
 
-// Lazy load Navbar and Footer for better initial load
+// ====== COMMON COMPONENTS (Lazy Loaded) ======
 const Navbar = lazy(() => import('../components/common/Navbar').then(m => ({ default: m.Navbar })));
 const Footer = lazy(() => import('../components/common/Footer').then(m => ({ default: m.Footer })));
 
-// Lazy load heavy components for better performance
+// ====== STATE-SPECIFIC COMPONENTS (Lazy Loaded) ======
+// These are generic components that work with any state data
 const StateHero = lazy(() => import('../components/state/StateHero').then(m => ({ default: m.StateHero })));
 const StateDepartments = lazy(() => import('../components/state/StateDepartments').then(m => ({ default: m.StateDepartments })));
 const StateProcess = lazy(() => import('../components/state/StateProcess').then(m => ({ default: m.StateProcess })));
@@ -17,13 +51,12 @@ const StateCTA = lazy(() => import('../components/state/StateCTA').then(m => ({ 
 const AboutFileMyRTI = lazy(() => import('../components/common/AboutFileMyRTI').then(m => ({ default: m.AboutFileMyRTI })));
 const RTIByDepartment = lazy(() => import('../components/common/RTIByDepartment').then(m => ({ default: m.RTIByDepartment })));
 
-// ComponentLoader removed - using inline placeholders for better performance
-
 export const StatePage: React.FC = () => {
-  // Try to get state from route param first, then fallback to subdomain, then default to telangana
+  // ====== STATE DETECTION ======
+  // Priority: 1) Route param, 2) Subdomain, 3) Default to Telangana
   const { stateSlug } = useParams<{ stateSlug?: string }>();
   const subdomainSlug = getStateSlugFromSubdomain();
-  const effectiveSlug = stateSlug || subdomainSlug || 'telangana'; // Default to telangana if no slug provided
+  const effectiveSlug = stateSlug || subdomainSlug || 'telangana';
 
   const { stateData, isLoading } = useStateData(effectiveSlug);
 
@@ -77,21 +110,21 @@ export const StatePage: React.FC = () => {
     );
   }
 
-  // Use stateData for rendering (deferredStateData might be null initially)
+  // ====== DATA PREPARATION ======
   const dataToUse = deferredStateData || stateData;
 
-  // Render appropriate hero component based on design theme
+  // ====== COMPONENT RENDERING ======
   const renderHero = () => {
     return <StateHero hero={dataToUse.hero} stateName={dataToUse.name} stateSlug={dataToUse.slug} />;
   };
 
-  // SEO Metadata - use current data
+  // ====== SEO METADATA ======
   const pageTitle = `File RTI Online in ${dataToUse.name} - FileMyRTI`;
   const pageDescription = dataToUse.hero.subtitle || `File RTI applications online in ${dataToUse.name} with FileMyRTI. Expert drafting, online submission, and real-time tracking. Get government information through Right to Information Act 2005.`;
   const canonicalUrl = typeof window !== 'undefined' ? window.location.href : `https://${dataToUse.slug}.filemyrti.com`;
   const ogImage = `https://filemyrti.com/src/assets/icons/logo.webp`;
 
-  // Structured Data (JSON-LD)
+  // ====== STRUCTURED DATA (JSON-LD) ======
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -230,6 +263,7 @@ export const StatePage: React.FC = () => {
             <Footer />
           </Suspense>
         </footer>
+        {/* FUTURE-USE: RTIFormModal - Preserved for potential future modal implementation */}
         {/* <RTIFormModal stateName={stateData.name} /> */}
         <LazyChatbot />
       </div>

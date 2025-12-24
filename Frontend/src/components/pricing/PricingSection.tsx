@@ -48,7 +48,6 @@ export const PricingSection: React.FC = () => {
           },
           async (paymentId: string, orderId: string) => {
             // Payment successful - you can handle the submission here
-            console.log('Payment successful:', { paymentId, orderId, model: selectedModelSlug });
             handleModalClose();
           },
           (errorMessage: string) => {

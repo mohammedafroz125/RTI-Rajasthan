@@ -1,10 +1,40 @@
+/**
+ * ============================================================================
+ * MAIN APPLICATION ENTRY POINT
+ * ============================================================================
+ * 
+ * Purpose: Root React component that sets up routing, error boundaries, and
+ *          lazy loading for the entire application.
+ * 
+ * Architecture:
+ * - Uses React Router for client-side routing
+ * - Implements code splitting via lazy loading for all pages
+ * - Wraps app in ErrorBoundary for graceful error handling
+ * - Provides HelmetProvider for SEO meta tag management
+ * 
+ * Routing Structure:
+ * - "/" → Home page (Rajasthan-specific homepage)
+ * - "/state/:stateSlug" → Dynamic state pages (Telangana, Delhi, etc.)
+ * - "/services/*" → RTI service detail pages
+ * - Other routes → Static pages (About, Contact, FAQ, etc.)
+ * 
+ * State-Specific Behavior:
+ * - Homepage ("/") is hardcoded to Rajasthan
+ * - State pages use dynamic routing with state-specific components
+ * - All state data is managed via useStateData hook
+ * 
+ * Used by: All states (shared routing infrastructure)
+ * ============================================================================
+ */
+
 import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { ErrorBoundary } from './components/common/ErrorBoundary';
 import { ScrollToTop } from './components/common/ScrollToTop';
 
-// Lazy load pages for code splitting
+// ====== PAGE IMPORTS (Lazy Loaded) ======
+// All pages are lazy-loaded for optimal initial bundle size
 const Home = lazy(() => import('./pages/Home').then(module => ({ default: module.Home })));
 const StatePage = lazy(() => import('./pages/StatePage').then(module => ({ default: module.StatePage })));
 const AboutUs = lazy(() => import('./pages/AboutUs').then(module => ({ default: module.AboutUs })));

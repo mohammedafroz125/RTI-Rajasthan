@@ -1,6 +1,36 @@
 /**
- * RTI Model Page Component
- * Production-ready service page with proper structure and separation of concerns
+ * ============================================================================
+ * RTI SERVICE MODEL PAGE
+ * ============================================================================
+ * 
+ * Purpose: Dynamic service detail page that displays comprehensive information
+ *          about individual RTI services (Seamless Filing, Anonymous, etc.).
+ * 
+ * State Usage: All states (shared service pages)
+ * 
+ * Routing:
+ * - "/services/seamless-online-filing"
+ * - "/services/anonymous"
+ * - "/services/1st-appeal"
+ * - "/services/bulk"
+ * - "/services/custom-rti"
+ * - "/services/15-minute-consultation"
+ * 
+ * Key Features:
+ * - Service-specific content from rtiModels.ts
+ * - Payment integration (Razorpay)
+ * - Application submission to backend
+ * - SEO optimization with structured data
+ * - Video lazy loading
+ * 
+ * Architecture:
+ * - Uses useRTIService hook for service data
+ * - Integrates payment flow via usePayment hook
+ * - Handles both free and paid services
+ * - Supports lead generation (no payment) for free services
+ * 
+ * Used by: All states (shared service infrastructure)
+ * ============================================================================
  */
 
 import React, { useState } from 'react';
@@ -173,17 +203,12 @@ export const RTIModelPage: React.FC = () => {
         // payment_id and order_id are optional and omitted for free services
       };
 
-      // Log the complete payload for debugging
       console.log('📤 Submitting RTI application (lead only, no payment):', {
-        ...applicationData,
-        // Don't log sensitive data in production
-        service_id: applicationData.service_id,
-        state_id: applicationData.state_id,
-        field_counts: {
-          full_name_length: applicationData.full_name?.length || 0,
-          rti_query_length: applicationData.rti_query?.length || 0,
-          address_length: applicationData.address?.length || 0
-        }
+        serviceId,
+        stateId,
+        name: apiData.name,
+        email: apiData.email,
+        mobile: apiData.mobile
       });
 
       // Call public API (no authentication required)
@@ -325,19 +350,14 @@ export const RTIModelPage: React.FC = () => {
         order_id: orderId
       };
 
-      // Log the complete payload for debugging
       console.log('📤 Submitting RTI application with payment:', {
-        ...applicationData,
-        // Don't log sensitive data in production
-        service_id: applicationData.service_id,
-        state_id: applicationData.state_id,
-        payment_id: applicationData.payment_id,
-        order_id: applicationData.order_id,
-        field_counts: {
-          full_name_length: applicationData.full_name?.length || 0,
-          rti_query_length: applicationData.rti_query?.length || 0,
-          address_length: applicationData.address?.length || 0
-        }
+        serviceId,
+        stateId,
+        paymentId,
+        orderId,
+        name: apiData.name,
+        email: apiData.email,
+        mobile: apiData.mobile
       });
 
       // Call public API (no authentication required)
@@ -404,8 +424,8 @@ export const RTIModelPage: React.FC = () => {
 
       // Check if service is free (price = 0) - skip payment for lead generation
       if (model.price === 0 || model.price === null || model.price === undefined) {
-        // Free service - submit directly without payment
         console.log('💰 Free service detected, skipping payment and submitting as lead');
+        // Free service - submit directly without payment
         await submitApplicationWithoutPayment(data);
         return;
       }

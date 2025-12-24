@@ -75,7 +75,7 @@ export const RajasthanDepartmentsCoveredSection: React.FC = () => {
                 key={index}
                 className="flex-shrink-0 w-[calc(25%-12px)] min-w-[200px] md:min-w-[220px]"
               >
-                <div className="bg-white border border-gray-300 rounded-lg p-4 text-left text-sm font-medium text-gray-800 w-full h-full">
+                <div className="bg-white border border-gray-300 rounded-lg p-4 text-center text-sm font-medium text-gray-800 w-full h-full flex items-center justify-center">
                   {dept}
                 </div>
               </div>

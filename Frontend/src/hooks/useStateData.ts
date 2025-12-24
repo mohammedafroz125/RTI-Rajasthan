@@ -1,6 +1,26 @@
 /**
- * Custom hook for State data management
- * Fetches state data from backend API with fallback to static data
+ * ============================================================================
+ * STATE DATA MANAGEMENT HOOK
+ * ============================================================================
+ * 
+ * Purpose: Central hook for fetching and managing state-specific data.
+ *          Provides seamless fallback from backend API to static data.
+ * 
+ * State Usage: All states (shared infrastructure)
+ * 
+ * Architecture:
+ * - Immediately returns static data (non-blocking)
+ * - Fetches backend data in background (enhancement, not requirement)
+ * - Merges backend data with static data when available
+ * - Uses requestIdleCallback for optimal performance
+ * 
+ * Key Features:
+ * - Zero blocking time (static data always available)
+ * - Graceful degradation (works offline)
+ * - Performance optimized (delayed API calls)
+ * 
+ * Used by: Home.tsx (Rajasthan), StatePage.tsx (all other states)
+ * ============================================================================
  */
 
 import { useState, useEffect, useMemo } from 'react';

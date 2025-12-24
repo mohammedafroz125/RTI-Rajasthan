@@ -1,3 +1,30 @@
+/**
+ * ============================================================================
+ * RAJASTHAN COMPREHENSIVE RTI FORM
+ * ============================================================================
+ * 
+ * Purpose: Main RTI application form for Rajasthan homepage. Collects user
+ *          information and RTI query, then submits to backend API.
+ * 
+ * State Usage: Rajasthan (active) - Used only on homepage
+ * 
+ * Features:
+ * - Multi-step form with validation
+ * - Integration with consultation API
+ * - Navigation to service pages
+ * - Animated section transitions
+ * 
+ * Form Fields:
+ * - Full Name
+ * - Email
+ * - Mobile Number
+ * - Address (optional)
+ * - RTI Query/Description
+ * 
+ * Used by: Home.tsx (Rajasthan homepage)
+ * ============================================================================
+ */
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useConsultationForm } from '../../hooks/useConsultationForm';

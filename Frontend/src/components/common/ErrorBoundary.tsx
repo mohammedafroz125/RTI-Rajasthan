@@ -35,6 +35,7 @@ export class ErrorBoundary extends Component<Props, State> {
     // Log error to error reporting service
     console.error('ErrorBoundary caught an error:', error, errorInfo);
 
+    // FUTURE-USE: Error tracking service integration - Preserved for production monitoring
     // TODO: Send to error tracking service (e.g., Sentry, LogRocket)
     // errorTrackingService.logError(error, errorInfo);
   }

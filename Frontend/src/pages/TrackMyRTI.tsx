@@ -53,6 +53,7 @@ export const TrackMyRTI: React.FC = () => {
     setSubmitStatus('idle');
 
     try {
+      // FUTURE-USE: API integration for RTI tracking - Preserved for backend implementation
       // TODO: Add API call to track RTI application
       // const result = await trackRTIAPI.track({
       //   applicationNo: formData.applicationNo.trim(),

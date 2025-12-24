@@ -12,19 +12,22 @@ const testimonials = [
     quote: "The RTI service helped me get my land records within 30 days. The process was simple and the team guided me throughout. Highly recommended.",
     name: "Ramesh Kumar",
     location: "Jaipur, Rajasthan",
-    role: "Farmer"
+    role: "Farmer",
+    image: "/images/rajasthan2.webp"
   },
   {
     quote: "I was struggling to get information about government schemes. With this RTI service, I received all details about subsidy programs in my district.",
     name: "Sunita Devi",
     location: "Jodhpur, Rajasthan",
-    role: "Social Worker"
+    role: "Social Worker",
+    image: "/images/rajasthan1.webp"
   },
   {
     quote: "Professional and reliable service. They helped me file an RTI about road construction funds in my village. The response came within the stipulated time.",
     name: "Mahendra Singh",
     location: "Udaipur, Rajasthan",
-    role: "Retired Teacher"
+    role: "Retired Teacher",
+    image: "/images/rajasthan3.webp"
   }
 ];
 
@@ -56,11 +59,15 @@ export const RajasthanEnhancedTestimonials: React.FC = () => {
               </p>
               <div className="border-t border-gray-200 pt-4 mt-auto">
                 <div className="flex items-center gap-3">
-                  <img 
-                    src={`https://ui-avatars.com/api/?name=${encodeURIComponent(testimonial.name)}&background=0267AD&color=fff&size=48&bold=true`}
-                    alt={testimonial.name}
-                    className="w-12 h-12 rounded-full flex-shrink-0"
-                  />
+                  <div className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-gray-200 bg-gray-100">
+                    <img 
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      className="w-full h-full object-cover"
+                      style={{ objectPosition: 'center 25%' }}
+                      loading="lazy"
+                    />
+                  </div>
                   <div>
                     <p className="font-semibold text-gray-900">{testimonial.name}</p>
                     <p className="text-sm font-normal text-gray-600">{testimonial.role}</p>

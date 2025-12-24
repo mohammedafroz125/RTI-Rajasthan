@@ -31,16 +31,8 @@ const faqs = [
     answer: "Yes, we offer anonymous RTI filing services where your identity is protected throughout the process. Our team files the application on behalf of our organization, ensuring your privacy while exercising your right to information.",
   },
   {
-    question: "What if my RTI application is rejected or I receive incomplete information?",
-    answer: "If your RTI is rejected or you receive incomplete information, you can file a First Appeal within 30 days to the First Appellate Authority. We provide complete assistance for filing appeals and can guide you through the entire process.",
-  },
-  {
     question: "Which departments can I file RTI applications for?",
     answer: "You can file RTI applications for all Rajasthan Government departments including Revenue, Police, Education, Health, PWD, Panchayati Raj, Urban Development, and many more. We cover all state and central government departments operating in Rajasthan.",
-  },
-  {
-    question: "How do I track my RTI application status?",
-    answer: "Once we file your RTI, you receive a unique tracking number. You can use this to track your application status through our portal, and we also send regular updates via SMS and email about the progress of your application.",
   },
   {
     question: "What documents do I need to file an RTI?",

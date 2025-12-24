@@ -1,3 +1,33 @@
+/**
+ * ============================================================================
+ * STATE DATA CONFIGURATION
+ * ============================================================================
+ * 
+ * Purpose: Central configuration file containing static data for all states.
+ *          Provides fallback data when backend API is unavailable.
+ * 
+ * State Usage: All states (Rajasthan, Telangana, Delhi, etc.)
+ * 
+ * Architecture:
+ * - Static data ensures zero blocking time
+ * - Backend API enhances this data when available
+ * - Each state has complete configuration (hero, departments, FAQs, etc.)
+ * 
+ * Key Data Structures:
+ * - StateData: Complete state configuration
+ * - StateHero: Hero section content
+ * - StateFAQ: Frequently asked questions
+ * 
+ * Usage:
+ * - Imported by useStateData hook
+ * - Used as fallback when API fails
+ * - Provides immediate data for SSR/SSG
+ * 
+ * Used by: useStateData hook, all state pages
+ * ============================================================================
+ */
+
+// ====== TYPE DEFINITIONS ======
 export interface StateHero {
   title: string;
   subtitle: string;
