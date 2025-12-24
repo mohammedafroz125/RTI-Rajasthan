@@ -10,17 +10,20 @@ const Footer = lazy(() => import('../components/common/Footer').then(m => ({ def
 // Lazy load Rajasthan-specific components
 const RajasthanHero = lazy(() => import('../components/rajasthan/RajasthanHero').then(m => ({ default: m.RajasthanHero })));
 const RajasthanTrustStrip = lazy(() => import('../components/rajasthan/RajasthanTrustStrip').then(m => ({ default: m.RajasthanTrustStrip })));
-const RajasthanAllServicesSection = lazy(() => import('../components/rajasthan/RajasthanAllServicesSection').then(m => ({ default: m.RajasthanAllServicesSection })));
-const RajasthanTestimonialsSection = lazy(() => import('../components/rajasthan/RajasthanTestimonialsSection').then(m => ({ default: m.RajasthanTestimonialsSection })));
-const RajasthanWhySection = lazy(() => import('../components/rajasthan/RajasthanWhySection').then(m => ({ default: m.RajasthanWhySection })));
-const RajasthanClientsSection = lazy(() => import('../components/rajasthan/RajasthanClientsSection').then(m => ({ default: m.RajasthanClientsSection })));
-const RajasthanRTIPortalSection = lazy(() => import('../components/rajasthan/RajasthanRTIPortalSection').then(m => ({ default: m.RajasthanRTIPortalSection })));
-const RajasthanFeaturedSection = lazy(() => import('../components/rajasthan/RajasthanFeaturedSection').then(m => ({ default: m.RajasthanFeaturedSection })));
-const RajasthanGuidesSection = lazy(() => import('../components/rajasthan/RajasthanGuidesSection').then(m => ({ default: m.RajasthanGuidesSection })));
-const RajasthanDepartmentsSection = lazy(() => import('../components/rajasthan/RajasthanDepartmentsSection').then(m => ({ default: m.RajasthanDepartmentsSection })));
+const RajasthanDepartmentsCoveredSection = lazy(() => import('../components/rajasthan/RajasthanDepartmentsCoveredSection').then(m => ({ default: m.RajasthanDepartmentsCoveredSection })));
 const RajasthanFinalCTASection = lazy(() => import('../components/rajasthan/RajasthanFinalCTASection').then(m => ({ default: m.RajasthanFinalCTASection })));
-const RajasthanConsultationCTA = lazy(() => import('../components/rajasthan/RajasthanConsultationCTA').then(m => ({ default: m.RajasthanConsultationCTA })));
-const RajasthanFAQ = lazy(() => import('../components/rajasthan/RajasthanFAQ').then(m => ({ default: m.RajasthanFAQ })));
+const RajasthanWhyFileRTISection = lazy(() => import('../components/rajasthan/RajasthanWhyFileRTISection').then(m => ({ default: m.RajasthanWhyFileRTISection })));
+
+// Comprehensive RTI Filing Solution Components
+const RajasthanComprehensiveForm = lazy(() => import('../components/rajasthan/RajasthanComprehensiveForm').then(m => ({ default: m.RajasthanComprehensiveForm })));
+const RajasthanEnhancedHowItWorks = lazy(() => import('../components/rajasthan/RajasthanEnhancedHowItWorks').then(m => ({ default: m.RajasthanEnhancedHowItWorks })));
+const RajasthanWhyRTISection = lazy(() => import('../components/rajasthan/RajasthanWhyRTISection').then(m => ({ default: m.RajasthanWhyRTISection })));
+const RajasthanResourcesSection = lazy(() => import('../components/rajasthan/RajasthanResourcesSection').then(m => ({ default: m.RajasthanResourcesSection })));
+const RajasthanEnhancedDepartments = lazy(() => import('../components/rajasthan/RajasthanEnhancedDepartments').then(m => ({ default: m.RajasthanEnhancedDepartments })));
+const RajasthanEnhancedFAQ = lazy(() => import('../components/rajasthan/RajasthanEnhancedFAQ').then(m => ({ default: m.RajasthanEnhancedFAQ })));
+const RajasthanEnhancedTestimonials = lazy(() => import('../components/rajasthan/RajasthanEnhancedTestimonials').then(m => ({ default: m.RajasthanEnhancedTestimonials })));
+const RajasthanWhatsAppHelp = lazy(() => import('../components/rajasthan/RajasthanWhatsAppHelp').then(m => ({ default: m.RajasthanWhatsAppHelp })));
+const RajasthanEnhancedServices = lazy(() => import('../components/rajasthan/RajasthanEnhancedServices').then(m => ({ default: m.RajasthanEnhancedServices })));
 
 // ComponentLoader removed - using inline placeholders for better performance
 
@@ -164,8 +167,8 @@ export const Home: React.FC = () => {
         <Navbar />
       </Suspense>
       <div className="min-h-screen flex flex-col">
-        <main id="main-content" className="flex-grow" role="main" aria-label="Main content">
-          {/* Section A - Rajasthan Hero with Form */}
+        <main id="main-content" className="flex-grow" role="main" aria-label="Main content" style={{ paddingTop: 0 }}>
+          {/* 1. Hero section (headline, value proposition, primary CTA) */}
           <Suspense fallback={
             <div className="bg-primary-600 pt-12 pb-12" data-loading>
               <div className="container-responsive max-w-7xl mx-auto px-4">
@@ -178,55 +181,66 @@ export const Home: React.FC = () => {
             <RajasthanHero stateName={dataToUse.name} />
           </Suspense>
 
-          {/* Section C - Trust Strip */}
+          {/* 2. Trust signals (applications filed, experience, credibility) */}
           <Suspense fallback={<div className="min-h-[120px] bg-primary-600" />}>
             <RajasthanTrustStrip />
           </Suspense>
 
-          {/* Section D - All Services Section */}
+          {/* 3. Booking / consultation form */}
           <Suspense fallback={<div className="min-h-[600px]" />}>
-            <RajasthanAllServicesSection />
+            <RajasthanComprehensiveForm />
           </Suspense>
 
-          {/* Section E - Testimonials Section */}
+          {/* 4. Why FileMyRTI (platform benefits, not RTI law explanation) */}
           <Suspense fallback={<div className="min-h-[400px]" />}>
-            <RajasthanTestimonialsSection />
+            <RajasthanWhyFileRTISection />
           </Suspense>
 
-          {/* Section F - Why Choose Us */}
-          <Suspense fallback={<div className="min-h-[400px]" />}>
-            <RajasthanWhySection />
-          </Suspense>
-
-          {/* Section G - Clients Section */}
-          <Suspense fallback={<div className="min-h-[300px]" />}>
-            <RajasthanClientsSection />
-          </Suspense>
-
-          {/* Section H - RTI Portal App Section */}
-          <Suspense fallback={<div className="min-h-[400px]" />}>
-            <RajasthanRTIPortalSection />
-          </Suspense>
-
-          {/* Section I - Blog/Guides Section */}
-          <Suspense fallback={<div className="min-h-[400px]" />}>
-            <RajasthanGuidesSection />
-          </Suspense>
-
-          {/* Section K - Final CTA Section */}
+          {/* 5. "Ready to Exercise Your RTI?" CTA section (button only) */}
           <Suspense fallback={<div className="min-h-[200px]" />}>
             <RajasthanFinalCTASection />
           </Suspense>
 
-          {/* Section L - Rajasthan Departments */}
+          {/* Service Cards Section */}
           <Suspense fallback={<div className="min-h-[400px]" />}>
-            <RajasthanDepartmentsSection />
+            <RajasthanEnhancedServices />
           </Suspense>
 
-          {/* Section M - Rajasthan FAQ */}
-          <Suspense fallback={<div className="min-h-[300px]" />}>
-            <RajasthanFAQ />
+          {/* 6. How RTI filing works (step-by-step process) */}
+          <Suspense fallback={<div className="min-h-[400px]" />}>
+            <RajasthanEnhancedHowItWorks />
           </Suspense>
+
+          {/* 7. Testimonials */}
+          <Suspense fallback={<div className="min-h-[400px]" />}>
+            <RajasthanEnhancedTestimonials />
+          </Suspense>
+
+          {/* 8. WhatsApp help section (informational support) */}
+          <Suspense fallback={<div className="min-h-[200px]" />}>
+            <RajasthanWhatsAppHelp />
+          </Suspense>
+
+          {/* 13. List of Rajasthan government departments supported */}
+          <Suspense fallback={<div className="min-h-[400px]" />}>
+            <RajasthanDepartmentsCoveredSection />
+          </Suspense>
+
+          {/* 9. RTI Templates for Rajasthan (letter templates/resources) */}
+          <Suspense fallback={<div className="min-h-[400px]" />}>
+            <RajasthanEnhancedDepartments />
+          </Suspense>
+
+          {/* 10. FAQ section */}
+          <Suspense fallback={<div className="min-h-[400px]" />}>
+            <RajasthanEnhancedFAQ />
+          </Suspense>
+
+          {/* 12. Blogs / resources */}
+          <Suspense fallback={<div className="min-h-[400px]" />}>
+            <RajasthanResourcesSection />
+          </Suspense>
+
         </main>
         <footer role="contentinfo">
           <Suspense fallback={null}>

@@ -1,225 +1,122 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AnimatedSection } from '../common/AnimatedSection';
 
 interface RajasthanHeroProps {
   stateName: string;
 }
 
-export const RajasthanHero: React.FC<RajasthanHeroProps> = ({ stateName }) => {
-  const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    mobile: '',
-    address: '',
-    pincode: '',
-    termsAccepted: false,
-  });
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value, type } = e.target;
-    if (type === 'checkbox') {
-      const checked = (e.target as HTMLInputElement).checked;
-      setFormData((prev) => ({ ...prev, [name]: checked }));
-    } else {
-      setFormData((prev) => ({ ...prev, [name]: value }));
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitStatus('submitting');
-    
-    try {
-      const { consultationsAPI } = await import('../../services/api');
-      await consultationsAPI.createPublic({
-        full_name: formData.fullName,
-        email: formData.email,
-        mobile: formData.mobile,
-        address: formData.address || null,
-        pincode: formData.pincode || null,
-        state_slug: 'karnataka',
-        source: 'hero_form',
-      });
-      
-      setSubmitStatus('success');
-      setTimeout(() => {
-        setFormData({
-          fullName: '',
-          email: '',
-          mobile: '',
-          address: '',
-          pincode: '',
-          termsAccepted: false,
-        });
-        setSubmitStatus('idle');
-      }, 3000);
-    } catch (error) {
-      setSubmitStatus('idle');
-    }
-  };
+export const RajasthanHero: React.FC<RajasthanHeroProps> = () => {
+  const navigate = useNavigate();
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-primary-600 to-primary-700 pt-16 pb-8 md:pt-20 md:pb-12 lg:pt-24 lg:pb-16">
-      <div className="container-responsive max-w-7xl mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-6 lg:gap-12 xl:gap-16 relative items-start lg:items-center">
-          {/* Left Content */}
-          <div className="flex flex-col justify-center text-white relative order-1 lg:order-1">
-            <div className="max-w-lg">
-              <h1 className="mb-4 text-4xl font-semibold leading-tight md:text-5xl lg:text-[56px]">
-                Your Trusted Partner for Rajasthan RTI Services
-              </h1>
-              <p className="mb-4 text-lg text-white/90 md:text-xl">
-                We simplify Right to Information applications and government filings,
-                so that you focus less on paperwork and more on getting the information you need.
-              </p>
-            </div>
-            
-            <div className="space-y-1.5 mb-4 relative">
-              <div className="flex items-center gap-2">
-                <div className="flex h-5 w-5 items-center justify-center rounded-full bg-white/20">
-                  <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <span className="text-sm md:text-base">Access All Rajasthan Departments</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="flex h-5 w-5 items-center justify-center rounded-full bg-white/20">
-                  <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <span className="text-sm md:text-base">Quick RTI Application Processing</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="flex h-5 w-5 items-center justify-center rounded-full bg-white/20">
-                  <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <span className="text-sm md:text-base">Expert Legal Assistance</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="flex h-5 w-5 items-center justify-center rounded-full bg-white/20">
-                  <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <span className="text-sm md:text-base">100% Secure & Transparent</span>
+    <section className="relative overflow-hidden min-h-[90vh] flex items-center" style={{ backgroundColor: '#1a2332', marginTop: 0, paddingTop: '64px' }}>
+      {/* Hawa Mahal Background Image - Positioned to show palace prominently on left */}
+      <div 
+        className="absolute inset-0"
+        style={{
+          backgroundImage: `url('/images/hawa%20mahal.webp')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'left center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        {/* Overlay gradient from left to right - lighter on left to show palace, darker on right for text */}
+        {/* Reduced opacity to make image visible while maintaining text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1a2332]/35 via-[#1a2332]/50 to-[#1a2332]/70"></div>
+      </div>
+
+      {/* Subtle pattern overlay for texture */}
+      <div 
+        className="absolute inset-0 opacity-5"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+        }}
+      ></div>
+
+      <div className="container-responsive max-w-7xl mx-auto px-4 relative z-10 py-12">
+        <div className="max-w-4xl mx-auto text-center">
+          {/* Badge */}
+          <AnimatedSection animation="slideDown" delay={200}>
+            <div className="mb-8 inline-flex items-center">
+              <div className="bg-transparent border-2 border-gray-400 rounded-lg px-6 py-3 inline-flex items-center gap-3">
+                <svg className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+                <p className="text-sm md:text-base text-white font-medium">
+                  Official RTI Filing Service for Rajasthan
+                </p>
               </div>
             </div>
+          </AnimatedSection>
+          
+          {/* Main Heading */}
+          <AnimatedSection animation="slideUp" delay={300}>
+            <h1 className="mb-6 text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white">
+              File RTI Online in <span style={{ color: '#CFE4F7', fontWeight: 800, letterSpacing: '0.5px' }}>Rajasthan</span>
+            </h1>
+          </AnimatedSection>
+          
+          {/* Description */}
+          <AnimatedSection animation="slideUp" delay={400}>
+            <p className="text-lg md:text-xl text-white mb-10 max-w-3xl mx-auto leading-relaxed">
+              Exercise your constitutional right to information. File RTI applications for any Rajasthan Government department with our trusted, legal assistance.
+            </p>
+          </AnimatedSection>
+          
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+            <AnimatedSection animation="fadeInScale" delay={500}>
+              <button
+                onClick={() => navigate('/services/custom-rti')}
+                className="text-white font-semibold px-8 py-4 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 text-lg"
+                style={{ backgroundColor: '#0267AD' }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#1E88E5'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#0267AD'}
+              >
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Start RTI Application
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </AnimatedSection>
+            <AnimatedSection animation="fadeInScale" delay={600}>
+              <button
+                onClick={() => navigate('/services/anonymous')}
+                className="bg-white border-2 border-gray-300 text-gray-800 font-semibold px-8 py-4 rounded-lg transition-all duration-200 hover:bg-gray-50 text-lg"
+              >
+                File Anonymously
+              </button>
+            </AnimatedSection>
           </div>
 
-          {/* Right Form */}
-          <div className="flex items-start lg:items-center justify-center lg:justify-end order-2 lg:order-2">
-            <div className="w-full max-w-sm bg-white p-4 shadow-2xl rounded-lg md:p-5">
-              {/* Main Heading */}
-              <h2 className="text-xl md:text-2xl font-semibold text-gray-900 mb-2">
-                Book Your Free Micro Consultation!
-              </h2>
+          {/* Trust Text */}
+          <AnimatedSection animation="fadeIn" delay={700}>
+            <p className="text-white/80 text-base md:text-lg mb-8">
+              Trusted by citizens across Rajasthan
+            </p>
+          </AnimatedSection>
 
-              {/* Separator Line */}
-              <div className="w-full h-0.5 bg-gray-900 mb-2"></div>
-
-              {/* Supporting Paragraph */}
-              <p className="text-xs text-gray-700 mb-3 leading-tight">
-                The FileMyRTI team is here to help you take the first step toward asserting your legal rights. 
-                Get expert guidance on filing RTI applications for Rajasthan government departments.
-              </p>
-              {submitStatus === 'success' ? (
-                <div className="text-center py-6">
-                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <svg className="w-6 h-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <p className="text-sm text-gray-700 font-semibold">Thank you! We'll call you shortly.</p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-2">
-                  <input
-                    type="text"
-                    name="fullName"
-                    value={formData.fullName}
-                    onChange={handleInputChange}
-                    required
-                    placeholder="Full Name"
-                    className="w-full rounded-md border border-gray-300 px-2.5 py-1.5 text-xs text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-500"
-                  />
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                    placeholder="E-mail Id"
-                    className="w-full rounded-md border border-gray-300 px-2.5 py-1.5 text-xs text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-500"
-                  />
-                  <input
-                    type="tel"
-                    name="mobile"
-                    value={formData.mobile}
-                    onChange={handleInputChange}
-                    required
-                    placeholder="Mobile"
-                    className="w-full rounded-md border border-gray-300 px-2.5 py-1.5 text-xs text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-500"
-                  />
-                  <input
-                    type="text"
-                    name="address"
-                    value={formData.address}
-                    onChange={handleInputChange}
-                    placeholder="Address"
-                    className="w-full rounded-md border border-gray-300 px-2.5 py-1.5 text-xs text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-500"
-                  />
-                  <input
-                    type="text"
-                    name="pincode"
-                    value={formData.pincode}
-                    onChange={handleInputChange}
-                    placeholder="Pin Code"
-                    className="w-full rounded-md border border-gray-300 px-2.5 py-1.5 text-xs text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-500"
-                  />
-                  <div className="flex items-center justify-between">
-                    <label htmlFor="whatsapp-updates" className="text-xs text-gray-700 leading-tight cursor-pointer">
-                      Get updates through WhatsApp
-                    </label>
-                    <button
-                      type="button"
-                      onClick={() => setFormData((prev) => ({ ...prev, termsAccepted: !prev.termsAccepted }))}
-                      className={`relative inline-flex h-5 w-9 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${
-                        formData.termsAccepted ? 'bg-primary-600' : 'bg-gray-300'
-                      }`}
-                      role="switch"
-                      aria-checked={formData.termsAccepted}
-                    >
-                      <span
-                        className={`pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${
-                          formData.termsAccepted ? 'translate-x-4' : 'translate-x-0'
-                        }`}
-                      />
-                    </button>
-                  </div>
-                  <input
-                    type="hidden"
-                    name="termsAccepted"
-                    value={formData.termsAccepted ? 'true' : 'false'}
-                  />
-                  <button
-                    type="submit"
-                    disabled={submitStatus === 'submitting'}
-                    className="w-full bg-yellow-500 hover:bg-yellow-600 disabled:bg-gray-400 text-white font-semibold py-2 text-xs rounded-md transition-colors disabled:cursor-not-allowed"
-                  >
-                    {submitStatus === 'submitting' ? 'PLEASE WAIT. . .' : 'GET STARTED NOW'}
-                  </button>
-                </form>
-              )}
-            </div>
+          {/* Feature Bullets */}
+          <div className="flex flex-wrap justify-center gap-6 md:gap-8 text-sm md:text-base text-white">
+            <AnimatedSection animation="slideUp" delay={800}>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                <span>Secure & Confidential</span>
+              </div>
+            </AnimatedSection>
+            <AnimatedSection animation="slideUp" delay={900}>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#0267AD' }}></div>
+                <span>Expert Legal Support</span>
+              </div>
+            </AnimatedSection>
           </div>
         </div>
       </div>
     </section>
   );
 };
-

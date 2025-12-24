@@ -127,7 +127,7 @@ const FooterComponent: React.FC = () => {
         </div>
 
         {/* Middle Section - Three Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 py-8 border-b border-gray-600">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 py-10 border-b border-gray-700/50">
           {/* Left Column - Contact Information (No heading) */}
           <div className="space-y-4">
             <div className="flex items-start gap-3">

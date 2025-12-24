@@ -69,9 +69,9 @@ const NavbarComponent: React.FC = () => {
       {/* Floating Social Media Bar - Only shown on homepage */}
       {isHomepage && <FloatingSocialBar />}
 
-      {/* Main Navbar - Fresh implementation with proper sticky positioning */}
+      {/* Main Navbar - Simple design */}
       <nav
-        className="fixed top-0 z-[100] w-full"
+        className="fixed top-0 z-[100] w-full bg-white border-b border-gray-200"
       >
         <div className={isServicePage ? "w-full pl-4 md:pl-6 pr-4 md:pr-6" : "container-responsive max-w-7xl mx-auto"}>
           <div className="flex justify-between items-center h-12">
