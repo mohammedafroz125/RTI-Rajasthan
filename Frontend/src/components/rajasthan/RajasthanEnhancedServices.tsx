@@ -147,40 +147,43 @@ export const RajasthanEnhancedServices: React.FC = () => {
 
         <div className="flex flex-col lg:flex-row gap-4">
           {/* Left Column - Service Selector */}
-          <div className="w-full lg:w-1/3 space-y-2">
-            {services.map((service, index) => (
-              <button
-                key={index}
-                onClick={() => handleServiceSelect(index)}
-                className={`w-full flex items-center justify-between p-3 rounded-lg border-2 transition-all duration-300 text-left ${
-                  selectedService === index
-                    ? 'border-[#0267AD] bg-[#E6F2FA] shadow-md'
-                    : 'border-gray-200 bg-white hover:border-gray-300 hover:shadow-sm'
-                }`}
-              >
-                <h3 className={`font-semibold text-xs md:text-sm transition-colors uppercase ${
-                  selectedService === index ? 'text-[#0267AD]' : 'text-gray-900'
-                }`}>
-                  {service.title}
-                </h3>
-                {selectedService === index && (
-                  <div className="flex-shrink-0">
-                    <div className="w-2 h-2 rounded-full bg-[#0267AD]"></div>
-                  </div>
-                )}
-              </button>
-            ))}
-          </div>
+          <AnimatedSection animation="slideRight" delay={400} className="w-full lg:w-1/3">
+            <div className="space-y-2">
+              {services.map((service, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleServiceSelect(index)}
+                  className={`w-full flex items-center justify-between p-3 rounded-lg border-2 transition-all duration-300 text-left ${
+                    selectedService === index
+                      ? 'border-[#0267AD] bg-[#E6F2FA] shadow-md'
+                      : 'border-gray-200 bg-white hover:border-gray-300 hover:shadow-sm'
+                  }`}
+                >
+                  <h3 className={`font-semibold text-xs md:text-sm transition-colors uppercase ${
+                    selectedService === index ? 'text-[#0267AD]' : 'text-gray-900'
+                  }`}>
+                    {service.title}
+                  </h3>
+                  {selectedService === index && (
+                    <div className="flex-shrink-0">
+                      <div className="w-2 h-2 rounded-full bg-[#0267AD]"></div>
+                    </div>
+                  )}
+                </button>
+              ))}
+            </div>
+          </AnimatedSection>
 
           {/* Right Column - Service Display Card */}
-          <div className="w-full lg:w-2/3 flex items-center">
-            <div 
-              key={selectedService}
-              className={`w-full bg-white rounded-xl border-2 border-gray-200 shadow-lg overflow-hidden transition-opacity duration-300 ${
-                isTransitioning ? 'opacity-0' : 'opacity-100'
-              }`}
-              style={{ borderColor: '#E5E7EB' }}
-            >
+          <AnimatedSection animation="slideLeft" delay={500} className="w-full lg:w-2/3">
+            <div className="flex items-center">
+              <div 
+                key={selectedService}
+                className={`w-full bg-white rounded-xl border-2 border-gray-200 shadow-lg overflow-hidden transition-opacity duration-300 ${
+                  isTransitioning ? 'opacity-0' : 'opacity-100'
+                }`}
+                style={{ borderColor: '#E5E7EB' }}
+              >
               <div className="p-6">
                 {/* Header */}
                 <div className="flex items-start gap-6 mb-4">
@@ -274,7 +277,8 @@ export const RajasthanEnhancedServices: React.FC = () => {
                 </div>
               </div>
             </div>
-          </div>
+            </div>
+          </AnimatedSection>
         </div>
       </div>
     </section>

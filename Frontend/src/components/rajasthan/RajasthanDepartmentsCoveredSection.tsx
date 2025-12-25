@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AnimatedSection } from '../common/AnimatedSection';
 
 export const RajasthanDepartmentsCoveredSection: React.FC = () => {
   const navigate = useNavigate();
@@ -54,12 +55,14 @@ export const RajasthanDepartmentsCoveredSection: React.FC = () => {
   return (
     <section className="py-16 md:py-20" style={{ backgroundColor: '#E0EDF5' }}>
       <div className="container-responsive max-w-7xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-serif font-semibold text-gray-900 tracking-wide mb-6">Rajasthan Departments Covered</h2>
-          <p className="text-base md:text-lg font-normal text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            We handle RTI applications across all Rajasthan government departments with state-specific expertise.
-          </p>
-        </div>
+        <AnimatedSection animation="fadeIn" delay={200}>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-serif font-semibold text-gray-900 tracking-wide mb-6">Rajasthan Departments Covered</h2>
+            <p className="text-base md:text-lg font-normal text-gray-600 max-w-2xl mx-auto leading-relaxed">
+              We handle RTI applications across all Rajasthan government departments with state-specific expertise.
+            </p>
+          </div>
+        </AnimatedSection>
 
         <div className="relative overflow-hidden">
           <div
@@ -73,7 +76,7 @@ export const RajasthanDepartmentsCoveredSection: React.FC = () => {
             {duplicatedDepartments.map((dept, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 w-[calc(25%-12px)] min-w-[200px] md:min-w-[220px]"
+                className="flex-shrink-0 w-[200px] md:w-[220px]"
               >
                 <div className="bg-white border border-gray-300 rounded-lg p-4 text-center text-sm font-medium text-gray-800 w-full h-full flex items-center justify-center">
                   {dept}

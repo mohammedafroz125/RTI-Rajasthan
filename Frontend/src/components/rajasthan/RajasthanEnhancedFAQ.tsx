@@ -70,6 +70,8 @@ export const RajasthanEnhancedFAQ: React.FC = () => {
                 <button
                   onClick={() => toggleFAQ(index)}
                   className="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
+                  aria-expanded={openIndex === index}
+                  aria-controls={`faq-answer-${index}`}
                 >
                   <span className="font-medium text-gray-900 pr-4">{faq.question}</span>
                   <ChevronDownIcon
@@ -79,7 +81,7 @@ export const RajasthanEnhancedFAQ: React.FC = () => {
                   />
                 </button>
                 {openIndex === index && (
-                  <div className="px-6 pb-5 animate-fadeIn">
+                  <div id={`faq-answer-${index}`} className="px-6 pb-5 animate-fadeIn" role="region">
                     <p className="text-gray-600 font-normal leading-relaxed">{faq.answer}</p>
                   </div>
                 )}

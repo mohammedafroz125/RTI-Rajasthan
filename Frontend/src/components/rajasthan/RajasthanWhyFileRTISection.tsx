@@ -1,4 +1,5 @@
 import React from 'react';
+import { AnimatedSection } from '../common/AnimatedSection';
 
 interface Benefit {
   title: string;
@@ -50,24 +51,28 @@ export const RajasthanWhyFileRTISection: React.FC = () => {
     <section className="py-16 md:py-20" style={{ backgroundColor: '#E0EDF5' }}>
       <div className="container-responsive max-w-7xl mx-auto px-4">
         <div className="bg-white rounded-2xl p-8 md:p-12 border border-[#E5EDF5] shadow-sm">
-          <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-serif font-semibold text-gray-900 tracking-wide mb-6">Why File RTI?</h2>
-          <p className="text-base md:text-lg font-normal text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Understand the benefits and importance of exercising your Right to Information.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {benefits.map((benefit, index) => (
-            <div key={index} className="bg-white border border-gray-200 rounded-lg shadow-md p-6 text-center">
-              <div className="text-primary-600 mb-4 flex justify-center">
-                {benefit.icon}
-              </div>
-              <h3 className="text-xl font-semibold mb-3 text-gray-900">{benefit.title}</h3>
-              <p className="text-gray-600 text-sm font-normal leading-relaxed">{benefit.description}</p>
+          <AnimatedSection animation="fadeIn" delay={200}>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-serif font-semibold text-gray-900 tracking-wide mb-6">Why File RTI?</h2>
+              <p className="text-base md:text-lg font-normal text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                Understand the benefits and importance of exercising your Right to Information.
+              </p>
             </div>
-          ))}
-        </div>
+          </AnimatedSection>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {benefits.map((benefit, index) => (
+              <AnimatedSection key={index} animation="fadeInScale" delay={400 + index * 100}>
+                <div className="bg-white border border-gray-200 rounded-lg shadow-md p-6 text-center">
+                  <div className="text-primary-600 mb-4 flex justify-center">
+                    {benefit.icon}
+                  </div>
+                  <h3 className="text-xl font-semibold mb-3 text-gray-900">{benefit.title}</h3>
+                  <p className="text-gray-600 text-sm font-normal leading-relaxed">{benefit.description}</p>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
         </div>
       </div>
     </section>
