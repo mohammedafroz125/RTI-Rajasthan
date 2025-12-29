@@ -52,7 +52,7 @@ export const RajasthanEnhancedTestimonials: React.FC = () => {
             <AnimatedSection key={testimonial.name} animation="fadeInScale" delay={400 + index * 100}>
               <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 h-full flex flex-col">
               <div className="mb-4">
-                <QuoteIcon className="w-8 h-8 text-[#0267AD] opacity-60" />
+                <QuoteIcon className="w-8 h-8" style={{ color: '#0267AD', opacity: 0.6 }} />
               </div>
               <p className="text-gray-700 font-normal leading-relaxed mb-6 flex-grow">
                 "{testimonial.quote}"

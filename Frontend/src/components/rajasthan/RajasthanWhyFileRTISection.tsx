@@ -62,13 +62,13 @@ export const RajasthanWhyFileRTISection: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {benefits.map((benefit, index) => (
-              <AnimatedSection key={index} animation="fadeInScale" delay={400 + index * 100}>
-                <div className="bg-white border border-gray-200 rounded-lg shadow-md p-6 text-center">
+              <AnimatedSection key={index} animation="fadeInScale" delay={400 + index * 100} className="h-full">
+                <div className="bg-white border border-gray-200 rounded-lg shadow-md p-6 text-center h-full flex flex-col">
                   <div className="text-primary-600 mb-4 flex justify-center">
                     {benefit.icon}
                   </div>
                   <h3 className="text-xl font-semibold mb-3 text-gray-900">{benefit.title}</h3>
-                  <p className="text-gray-600 text-sm font-normal leading-relaxed">{benefit.description}</p>
+                  <p className="text-gray-600 text-sm font-normal leading-relaxed flex-grow">{benefit.description}</p>
                 </div>
               </AnimatedSection>
             ))}

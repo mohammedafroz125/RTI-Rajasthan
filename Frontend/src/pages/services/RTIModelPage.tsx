@@ -206,7 +206,7 @@ export const RTIModelPage: React.FC = () => {
       console.log('📤 Submitting RTI application (lead only, no payment):', {
         serviceId,
         stateId,
-        name: apiData.full_name,
+        name: apiData.name,
         email: apiData.email,
         mobile: apiData.mobile
       });
@@ -355,7 +355,7 @@ export const RTIModelPage: React.FC = () => {
         stateId,
         paymentId,
         orderId,
-        name: apiData.full_name,
+        name: apiData.name,
         email: apiData.email,
         mobile: apiData.mobile
       });

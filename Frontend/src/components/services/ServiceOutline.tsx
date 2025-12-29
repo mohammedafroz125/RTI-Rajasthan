@@ -74,7 +74,7 @@ export const ServiceOutline: React.FC = React.memo(() => {
       </div>
 
       {/* What You Get Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
         {/* Card 1 - Expert Drafting */}
         <div className="border border-gray-200 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
           <div className="w-12 h-12 bg-primary-50 rounded-lg flex items-center justify-center mb-4">
@@ -88,20 +88,7 @@ export const ServiceOutline: React.FC = React.memo(() => {
           </p>
         </div>
 
-        {/* Card 2 - Application Tracking */}
-        <div className="border border-gray-200 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
-          <div className="w-12 h-12 bg-green-50 rounded-lg flex items-center justify-center mb-4">
-            <svg className="w-7 h-7 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-            </svg>
-          </div>
-          <h5 className="font-semibold text-gray-900 text-lg mb-2">Real-time Application Tracking</h5>
-          <p className="text-gray-600 text-sm">
-            Track your RTI application status in real-time with instant notifications and regular updates on submission and response progress.
-          </p>
-        </div>
-
-        {/* Card 3 - Authority Verification */}
+        {/* Card 2 - Authority Verification */}
         <div className="border border-gray-200 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
           <div className="w-12 h-12 bg-purple-50 rounded-lg flex items-center justify-center mb-4">
             <svg className="w-7 h-7 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>

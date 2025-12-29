@@ -47,7 +47,7 @@ const services = [
     isQuote: false,
     route: "/services/seamless-online-filing",
     buttonText: "File Now",
-    features: ["Expert drafting", "Online submission", "Timely dispatch", "Application tracking"]
+    features: ["Expert drafting", "Online submission", "Timely dispatch"]
   },
   {
     icon: AnonyIcon,
@@ -71,7 +71,7 @@ const services = [
     isQuote: false,
     route: "/services/1st-appeal",
     buttonText: "Appeal Now",
-    features: ["Expert appeal drafting", "Legal guidance", "Quick submission", "Appeal tracking"]
+    features: ["Expert appeal drafting", "Legal guidance", "Quick submission"]
   },
   {
     icon: BulkIcon,
@@ -83,7 +83,7 @@ const services = [
     isQuote: true,
     route: "/services/bulk",
     buttonText: "Request Quote",
-    features: ["Volume discounts", "Bulk processing", "Organized tracking", "Dedicated support"]
+    features: ["Volume discounts", "Bulk processing", "Dedicated support"]
   },
   {
     icon: CustomIcon,
@@ -216,7 +216,7 @@ export const RajasthanEnhancedServices: React.FC = () => {
                     <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
                       {currentService.title}
                     </h3>
-                    <p className="text-sm text-gray-600 leading-relaxed line-clamp-2">
+                    <p className="text-sm text-gray-600 leading-relaxed">
                       {currentService.fullDescription}
                     </p>
                   </div>

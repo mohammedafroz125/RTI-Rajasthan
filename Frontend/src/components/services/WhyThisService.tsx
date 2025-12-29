@@ -47,7 +47,7 @@ export const WhyThisService: React.FC<WhyThisServiceProps> = React.memo(({ servi
         </svg>
       ),
       title: 'Complete Transparency',
-      description: 'Track your application status in real-time and stay informed throughout the entire process.'
+      description: 'Stay informed throughout the entire process with clear communication and regular updates.'
     }
   ];
 

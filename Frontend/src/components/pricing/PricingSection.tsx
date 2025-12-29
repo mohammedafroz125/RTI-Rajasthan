@@ -46,7 +46,7 @@ export const PricingSection: React.FC = () => {
             email: data.email,
             mobile: data.mobile
           },
-          async (_paymentId: string, _orderId: string) => {
+          async (paymentId: string, orderId: string) => {
             // Payment successful - you can handle the submission here
             handleModalClose();
           },
@@ -98,7 +98,7 @@ export const PricingSection: React.FC = () => {
                   'Expert drafting service',
                   'Online submission to Telangana departments',
                   'Timely dispatch via registered post',
-                  'Application tracking & status updates',
+                  'Status updates & communication',
                   'Proper formatting as per Telangana RTI rules'
                 ],
                 'anonymous': [
@@ -112,7 +112,7 @@ export const PricingSection: React.FC = () => {
                   'Expert appeal drafting',
                   'Quick review process',
                   'Online submission to First Appellate Authority',
-                  'Appeal tracking & follow-up',
+                  'Appeal follow-up & support',
                   'Legal guidance for Telangana appeal procedures'
                 ],
                 'bulk': [
@@ -120,7 +120,7 @@ export const PricingSection: React.FC = () => {
                   'Bulk submission support',
                   'Cost-effective pricing',
                   'Professional handling',
-                  'Centralized tracking for all applications'
+                  'Centralized management for all applications'
                 ],
                 'custom-rti': [
                   'Personalized RTI design',

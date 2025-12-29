@@ -24,8 +24,8 @@ export const HowItWorks: React.FC = React.memo(() => {
     },
     {
       number: '4',
-      title: 'Track & Receive',
-      description: 'Monitor your application status and receive the information you requested.'
+      title: 'Receive Response',
+      description: 'Receive the information you requested directly from the government department.'
     }
   ];
 
