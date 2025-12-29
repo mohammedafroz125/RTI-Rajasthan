@@ -53,9 +53,10 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({ items }) => {
     <>
       <nav
         aria-label="Breadcrumb navigation"
-        className="container-responsive max-w-7xl mx-auto py-4"
+        className="container-responsive max-w-7xl mx-auto py-4 px-4 md:px-6"
+        style={{ position: 'relative', zIndex: 10 }}
       >
-        <ol className="flex items-center space-x-2 text-sm text-gray-600" itemScope itemType="https://schema.org/BreadcrumbList">
+        <ol className="flex items-center space-x-2 text-sm text-gray-600 flex-wrap" itemScope itemType="https://schema.org/BreadcrumbList">
           {breadcrumbItems.map((item, index) => (
             <li
               key={item.path}
