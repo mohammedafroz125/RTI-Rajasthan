@@ -1,9 +1,7 @@
 import React, { useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { AnimatedSection } from '../common/AnimatedSection';
 
 export const RajasthanDepartmentsCoveredSection: React.FC = () => {
-  const navigate = useNavigate();
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const animationFrameRef = useRef<number>();
 

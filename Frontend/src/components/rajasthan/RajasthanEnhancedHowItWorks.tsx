@@ -13,12 +13,6 @@ const SendIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const ClockIcon = ({ className }: { className?: string }) => (
-  <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-  </svg>
-);
-
 const PencilIcon = ({ className }: { className?: string }) => (
   <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
@@ -91,7 +85,7 @@ export const RajasthanEnhancedHowItWorks: React.FC = () => {
                 <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-shadow duration-300 h-full border border-gray-200">
                   <div className="relative z-10 flex flex-col items-center text-center">
                     <div className="w-16 h-16 rounded-full flex items-center justify-center mb-4 transition-colors duration-300" style={{ backgroundColor: '#C8E0F0' }}>
-                      <step.icon className="w-7 h-7" style={{ color: '#0267AD' }} />
+                      <step.icon className="w-7 h-7 text-[#0267AD]" />
                     </div>
                     <span className="text-xs font-bold mb-2" style={{ color: '#1E88E5' }}>STEP {step.step}</span>
                     <h3 className="text-xl font-semibold text-gray-900 mb-3">
