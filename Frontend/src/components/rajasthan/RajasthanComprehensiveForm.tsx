@@ -146,15 +146,48 @@ export const RajasthanComprehensiveForm: React.FC = () => {
     return (
       <section id="application-form" className="py-12 md:py-16 bg-white">
         <div className="container-responsive max-w-7xl mx-auto px-4">
-          <AnimatedSection animation="fadeInScale" delay={0}>
-              <div className="max-w-2xl mx-auto text-center bg-white rounded-2xl p-12 shadow-lg">
-              <CheckCircleIcon className="w-20 h-20 text-green-500 mx-auto mb-6" />
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Thank You!</h2>
-              <p className="text-lg text-gray-600 mb-6">
-                We'll contact you within 24 hours to proceed with your RTI filing.
-              </p>
+          <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-stretch">
+            {/* Left - Info (same as form) */}
+            <div className="flex flex-col lg:justify-center h-full rounded-2xl px-6 lg:px-8 pt-6 lg:pt-8 pb-6 lg:pb-8" style={{ backgroundColor: 'rgba(1, 103, 173, 0.12)' }}>
+              <AnimatedSection animation="slideRight" delay={200}>
+                <div className="flex flex-col w-full">
+                  <h2 className="text-3xl md:text-4xl font-serif font-semibold text-gray-900 tracking-wide mb-6">
+                    Book Your Free RTI Consultation
+                  </h2>
+                  <p className="text-base md:text-lg font-normal text-gray-600 mb-7 leading-relaxed">
+                    Talk to our RTI experts to understand whether your query qualifies under the Right to Information Act, 2005. Get guidance on the correct Rajasthan Government department before filing.
+                  </p>
+
+                  <div className="space-y-4">
+                    {[
+                      "Free eligibility check for your RTI query",
+                      "Guidance on the correct Rajasthan department",
+                      "Expert advice on drafting RTI questions",
+                      "No obligation to file immediately",
+                    ].map((item) => (
+                      <div key={item} className="flex items-start gap-3">
+                        <CheckCircleIcon className="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-700 text-lg font-normal leading-relaxed">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </AnimatedSection>
             </div>
-          </AnimatedSection>
+
+            {/* Right - Success Message (replaces form) */}
+            <div className="flex flex-col h-full">
+              <AnimatedSection animation="fadeInScale" delay={300}>
+                <div className="bg-white rounded-2xl p-4 md:p-5 border border-gray-200 shadow-lg h-full flex flex-col items-center justify-center">
+                  <CheckCircleIcon className="w-20 h-20 text-green-500 mb-6" />
+                  <h2 className="text-3xl font-bold text-gray-900 mb-4">Thank You!</h2>
+                  <p className="text-lg text-gray-600 mb-6 text-center">
+                    We'll contact you within 24 hours to proceed with your RTI filing.
+                  </p>
+                </div>
+              </AnimatedSection>
+            </div>
+          </div>
         </div>
       </section>
     );
