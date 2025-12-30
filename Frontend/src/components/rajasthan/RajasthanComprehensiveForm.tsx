@@ -26,7 +26,6 @@
  */
 
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useConsultationForm } from '../../hooks/useConsultationForm';
 import { consultationsAPI } from '../../services/api';
 import { AnimatedSection } from '../common/AnimatedSection';
@@ -76,7 +75,6 @@ const CheckCircleIcon = ({ className }: { className?: string }) => (
 );
 
 export const RajasthanComprehensiveForm: React.FC = () => {
-  const navigate = useNavigate();
   const {
     formData,
     errors,
@@ -103,11 +101,6 @@ export const RajasthanComprehensiveForm: React.FC = () => {
 
       setShowSuccess(true);
       resetForm();
-      
-      // Redirect to services page after 2 seconds
-      setTimeout(() => {
-        navigate('/services/seamless-online-filing');
-      }, 2000);
     } catch (error) {
       console.error('Form submission error:', error);
       // Error handling is done by the hook
@@ -156,11 +149,10 @@ export const RajasthanComprehensiveForm: React.FC = () => {
           <AnimatedSection animation="fadeInScale" delay={0}>
               <div className="max-w-2xl mx-auto text-center bg-white rounded-2xl p-12 shadow-lg">
               <CheckCircleIcon className="w-20 h-20 text-green-500 mx-auto mb-6" />
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Application Submitted!</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Thank You!</h2>
               <p className="text-lg text-gray-600 mb-6">
                 We'll contact you within 24 hours to proceed with your RTI filing.
               </p>
-              <p className="text-sm text-gray-500">Redirecting to services page...</p>
             </div>
           </AnimatedSection>
         </div>
