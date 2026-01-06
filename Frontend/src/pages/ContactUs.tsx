@@ -164,7 +164,7 @@ export const ContactUs: React.FC = () => {
       "telephone": "91-99111-00589",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Flat No. 202, Radhakrishna Residency, Kalyannagar Phase 3",
+        "streetAddress": "Flat No. 201, Radhakrishna Residency, Kalyannagar Phase 3",
         "addressLocality": "Hyderabad",
         "postalCode": "500045",
         "addressCountry": "IN"
@@ -236,7 +236,7 @@ export const ContactUs: React.FC = () => {
                   <div className="p-4 sm:p-6 bg-gray-50">
                     <h3 className="text-lg font-bold text-gray-900 mb-2">Our Office</h3>
                     <p className="text-sm text-gray-700 leading-relaxed">
-                      Flat No. 202, Radhakrishna Residency,<br />
+                      Flat No. 201, Radhakrishna Residency,<br />
                       Kalyannagar Phase 3,<br />
                       Hyderabad - 500045, Telangana, India
                     </p>
