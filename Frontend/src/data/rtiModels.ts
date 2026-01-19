@@ -22,7 +22,7 @@ export const rtiModels: Record<string, RTIModel> = {
       'Authority verification',
       'Status updates'
     ],
-    price: 699,
+    price: 399,
     originalPrice: 4999,
     buttonText: 'File Now'
   },
@@ -62,7 +62,7 @@ export const rtiModels: Record<string, RTIModel> = {
       'Legal guidance',
       'Timely filing'
     ],
-    price: 699,
+    price: 399,
     originalPrice: 3999,
     buttonText: 'Appeal Now'
   },
@@ -102,7 +102,7 @@ export const rtiModels: Record<string, RTIModel> = {
       'Individual attention',
       'Complete customization'
     ],
-    price: 699,
+    price: 399,
     originalPrice: 3499,
     buttonText: 'Custom RTI'
   },
